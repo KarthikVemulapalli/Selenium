@@ -1,0 +1,48 @@
+Git (Distributed Version Control System) Importance & Commands:
+	* Add is from 'WorkingArea' to 'StagingArea'
+	* Commit is from 'StagingArea' to 'LocalRepository'
+	* Push is from 'LocalRepository' to 'RemoteRepository'.
+	* Pull is from 'RemoteRepository' to 'WorkingArea'.
+	* Basic git commands 'https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html'
+	* Advanced git commands 'https://www.atlassian.com/git/glossary'
+
+	Push Project code to Github,
+		1.First Introduce Yourself to Git,
+			git config --global user.name "Karthik"
+			git config --global user.email "vemulapalli.karthik@gmail.com"	
+		2.Navigate to the folder structure in Command Prompt, where project is present.
+		3.Initialize git file in the path using 
+			git init
+		4.Add code to 'Staging Area'.
+			git add * {* represents all files}
+		5.Commit the code present in Staging area. We can only commit the code that is present in 'Staging Area'.
+			git commit -m "Commit Message"
+		6.Connect local repository to Remote repository
+			git remote add origin 'remote repository link'
+		7.Push the code from local repository to remote repository master branch (default branch).
+			git push origin master
+	Clone project from Github,
+		1.Taking the project for the first time, the below code copy the complete code to the directory where you required.
+			git clone 'remote repository link'
+	Check the status of the project
+		1.Basically it displays the changes you have made. The changes will be shown in Green, if code is added to 'Staging Area'. If not it displays in Red.
+			git status	
+	Get the latest code Changes in Project. 
+		1.Pulls all the code from Github to local working area.
+			git pull origin master
+	Creating a branch to the project.
+		1.New branch (develop) created so modifications will not impact master branch. This new branch will have all the code from master. '-b' is used to create new branch. 
+			git checkout -b develop
+		2.To check in which branch currently you are working on, it will display the branch.
+			git branch
+		3.To change the view from master to develop branch
+			git checkout develop
+	Merge develop branch to master branch
+		1.First make sure you are in master branch 'active branch'
+			git checkout master
+		2.Now merge develop branch to active branch i.e. master
+			git merge develop
+	Unstage any file from StagingArea
+		1.To unstage any file
+			git rm --cached 'fileName'
+		
