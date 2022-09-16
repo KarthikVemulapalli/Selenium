@@ -1,0 +1,227 @@
+JDK and Eclipse Installation: The following steps are for Windows OS
+	Step1: Install Latest JDK (Java Development Kit)
+	Step2: You can find JDK in 'C:\Program Files\Java'
+	Step3: Add System Environment Variables for JAVA_HOME, Java Path
+	Step4: Under System Variables click on 'New' button. Enter Variable Name='JAVA_HOME' & Variable Value='C:\Program Files\Java\jdk-16.0.2'
+	Step5: Inside System Variables click on 'Path' and add 'C:\Program Files\Java\jdk-16.0.2\bin'
+	Step6: Install code editor i.e. 'Eclipse IDE for Java Developers' or 'IntelliJ'
+	Step7: Create a Maven Project to start coding
+	Step8: If Java(jre) is not configured to project follow below steps,
+		a. Right click on Project
+	  	b. Click on BuildPath -> Configure BuildPath
+	  	c. Libraries Tab -> Click on ModulePath -> Add Library -> JRE System library -> Next -> Execution Environment -> Select the latest JRE available
+	  	d. Click on Apply and Close button
+	Step9: We can continue with Java Coding
+	Step10: Add Maven Dependencies Selenium, TestNG in 'pom.xml' to start Selenium
+	Step11: In case there is no 'pom.xml' or want to add Jars in project follow below steps,
+		a. Right click on Project
+	  	b. Click on BuildPath -> Configure BuildPath
+	  	c. Libraries Tab -> Click on ClassPath -> Add External JARS -> Select the Jars you want to add
+	  	d. Click on Apply and Close button
+
+
+Git SetUp through Eclipse
+	Step1: Create a local repository in System
+	Step2: 'Add' code to Staging Area
+	Step3: 'Commit' code to Local Repository
+	Step4: Create a repository in Remote Server and get the project link
+	Step5: 'Push' code to Remote Repository (GitHub)
+
+
+Git (Distributed Version Control System) Importance & SetUp through Command Prompt
+	* Add is from 'WorkingArea' to 'StagingArea'
+	* Commit is from 'StagingArea' to 'LocalRepository'
+	* Push is from 'LocalRepository' to 'RemoteRepository'.
+	* Pull is from 'RemoteRepository' to 'WorkingArea'.
+	* Basic git commands 'https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html'
+	* Advanced git commands 'https://www.atlassian.com/git/glossary'
+
+	Push Project code to Github,
+		1.First Introduce Yourself to Git,
+			git config --global user.name "Karthik"
+			git config --global user.email "vemulapalli.karthik@gmail.com"	
+		2.Navigate to the folder structure in Command Prompt, where project is present.
+		3.Initialize git file in the path using 
+			git init
+		4.Add code to 'Staging Area'.
+			git add * {* represents all files}
+		5.Commit the code present in Staging area. We can only commit the code that is present in 'Staging Area'.
+			git commit -m "Commit Message"
+		6.Connect local repository to Remote repository
+			git remote add origin 'remote repository link'
+		7.Push the code from local repository to remote repository master branch (default branch).
+			git push origin master
+	Clone project from Github,
+		1.Taking the project for the first time, the below code copy the complete code to the directory where you required.
+			git clone 'remote repository link'
+	Check the status of the project
+		1.Basically it displays the changes you have made. The changes will be shown in Green, if code is added to 'Staging Area'. If not it displays in Red.
+			git status	
+	Get the latest code Changes in Project. 
+		1.Pulls all the code from Github to local working area.
+			git pull origin master
+	Creating a branch to the project.
+		1.New branch (develop) created so modifications will not impact master branch. This new branch will have all the code from master. '-b' is used to create new branch. 
+			git checkout -b develop
+		2.To check in which branch currently you are working on, it will display the branch.
+			git branch
+		3.To change the view from master to develop branch
+			git checkout develop
+	Merge develop branch to master branch
+		1.First make sure you are in master branch 'active branch'
+			git checkout master
+		2.Now merge develop branch to active branch i.e. master
+			git merge develop
+	Unstage any file from StagingArea
+		1.To unstage any file
+			git rm --cached 'fileName'
+
+
+Selenium Grid SetUp
+	* Grid consists of Hub (Router, Distributor, SessionMap) and Node.
+	* Architecture
+		1.Client sends request to 'Router'.
+		2.During initial step Router request the 'Distributor' to create a sessionID.
+		3.Distributor performs,
+			a.Distributor assigns the task to particular node.
+			b.Distributor send the sessionID and NodeURI details to 'SessionMap'
+		3.SessionMap shares the Node information to the Router.
+		4.Once Router receives the sessionID information, from next client request Router sends the request directly to the Node.
+		
+	Types of modes to activate Selenium Grid, by Grid Roles:
+		1.Standalone - It is the union of all the components.
+		2.Hub and Node - It enables the classic Hub and Node itself. Using one command all components will be enabled.
+		3.Distributed - Each component needs to be started on its own. Multiple commands need to be enabled individually for each components.
+			Hub Individual Components - Router, Distributor, SessionMap, New SessionQueue, Event Bus, Nodes.
+			
+	Launch Selenium Server: Check out the pdf available in main/resources/SeleniumGrid
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selenium Architecture
+	Step1: Selenium code (Client) will be converted to JaSon wire protocol and Sent to browser driver over http
+	Step2: Drivers are Standalone Servers different for each browser
+	Step3: The driver send http request to their respective browser over http
+	Step4: Browser sent http response to driver over http
+	Step5: driver sends the response from browser to Client in JaSon wire protocol
+
+Selenium WebDriver Architecture:
+	Language level Bindings <-> Selenium Webdriver API <-> Browser Drivers 
+	To setup language bindings -> install jars from 'www.seleniumhq.org' and download based on programming language usage. Now add jars to eclipse
+
+Selenium Components
+	1.Selenium Integrated Development Environment (IDE) - Based on UI [User Interface] uses Firefox plugin
+		* It only supports Firefox browser
+		* GUI for recording user action
+		* Recorded scripts can be used in other browsers
+	2.Selenium Remote Control (RC) - Consists of two parts
+		a. Selenium Server - Interprets and executes selenium commands
+		b. Selenium Client Library - Interface between programming and selenium server
+	3.Selenium WEBDriver - Based on API [Application Programming Interface]
+		* It was the first cross platform testing [Cross browser testing involves comparing and analyzing the behavior of your an be practiced inside website in different browser environments. It helps ensure that your website delivers an optimal user experience, independent of the browser used to access it.]
+	4.Selenium Grid
+		* Distribute the tests across multiple Physical Machines or Virtual Machines
+		* Key Terms are Hub & Node, where Hub acts as server/brain & Node where test cases are executed
+
+* Later on 'Selenium Remote Control (RC)' is integrated with 'WebDriver' -> 'Selenium 2'.
+* Selenium Webdriver used for automation testing of web applications
+* In 2004 at ThoughtWorks, selenium is created initially called 'Java Script Test Runner'. Created by JASON HUGGINS to automate tasks in Web browsers.
+
+System.setProperty (BrowserSyntax, BrowserPath);
+	- For Chrome Browser, BrowserSyntax = “webdriver.chrome.driver”
+	- For Edge Browser, BrowserSyntax = “webdriver.edge.driver”
+	- For Firefox Browser, BrowserSyntax = “webdriver.gecko.driver”
+
+Advantages:
+	Selenium is a combination of tools
+	Selenium supports matured Object Oriented Programming Language like Java
+	Can be applied in different project methologies like DevOps, Agile
+	Its save lot of time in Test Driven Development (TDD), Continuous Integration (CI), Continuous Testing (CT)
+	Can interact with complex UI elements like Ajax Controls
+
+Selenium Installation:
+	1. Install Java(TM) SE Development Kit JDK 13.0.2 (Latest for Computer Compatability). Path for Java Program files (C-Drive)
+	2. Download Eclipse IDE 2020-06
+	3. Build Language Binding for Eclipse
+
+Selenium Configuration Settings in Eclipse:
+	Configure language binding
+	Configure unit testing framework [Framework - Used for structuring automation script]
+	
+Finding elemensts by using CSS Selector locator the most common ones are:
+	1.Tag & ID - Format: css=tag#ID (Ex: driver.findElement (By.cssSelector("input#ctl00_body_txtUserID"));)
+	2.Tag & Class - Format: css=tag.class (Ex: driver.findElement(By.cssSelector("input.buttonStyle"));)
+	3.Tag & Attribute - Format: css=tag[attribute=value] (Ex: driver.findElement(By.cssSelector("input[id=ctl00_body_txtUserID]"));)
+	4.Tag, Class & Attribute - Format: css=tag.class[attribute=value] (Ex: driver.findElement(By.cssSelector("input.text[id=ctl00_body_txtUserID]"));)
+
+XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
+	1.Absolute Xpath - Each of those nested relationships present in Xpath need to be present 100% all the time, or the locator will not function.
+	2.Relative Xpath - A relative xpath is one where the path starts from the node of your choise - it doesn't need to start from the root node. (Ex: xpath=//*[@id='social-media']/ul/li[3]/a)
+		[*Note : Single slash('/') signifies to look for the element immediately inside its parent and a double slash('//') signifies to look for any child element inside the parent element.]
+	3.Customs Xpath - Format: xpath=//tag_name[@attribute='value']
+		a. Contains: Format: xpath=//input[contains (@name,'txtUserID')]
+		b. OR & AND: Format: xpath=//input[@type='submit' OR @name='buttonSubmit'] & xpath=//input[@type='submit' AND @name='buttonSubmit']
+		c. Start-with function
+
+Webpage Synchronization with driver:
+	1. Implicit Wait - Used only once after driver intialization. Applicable for all the statements of the code till the browser or driver is closed. The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
+		Syntax: driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	2. Explicit Wait - Used only where synchronization is missed.
+		Syntax: WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
+
+iFrames: 
+	This effect of 'page within a page' is achieved by building each section as a separate HTML file and having one "Master" HTML file to identify all of the sections.
+	In the HTML master file, frames are defined with FRAMESET and FRAME tags
+	Syntax: driver.switchto().frame();
+
+AJAX: AJAX(Asynchronous JavaScript And XML) is a web development technique which uses a client-side JavaScript
+	Communicates to and from a server, Updates parts of a web page using the information received from the server, Without reloading the entire page.
+
+Multiple Windows Handling:
+	Syntax: Set<String> windowHandles = driver.getWindowHandles();
+        Use for loop to iterate between the Windows opened, identify the windows by using getTitle() function
+
+Alert PopUps:
+	Syntax: driver.switchTo().alert();
+
+Maximize/Minimize the Window:
+	Example: driver.manage().window().maximize();
+
+Operations performed using Mouse:
+	Use 'Actions' class to perform operations using mouse
+	Syntax: Actions action = new Actions(driver);
+
+Code Interacting with Excel Sheet:
+	File file = new File(<Excel sheet path in system with Excel Extension>);
+	FileInputStream fis = new FileInputStream(file);
+	XSSFWorkbook workbook = new XSSFWorkbook(fis);
+	XSSFSheet sheet = workbook.getSheet("Sheet1");
+	FileOutputStream fos = new FileOutputStream(file);
+	workbook.write(fos);
+	workbook.close();
+
+Screenshot Capture: Take the screenshot using 'TakesScreenshot' interface using the 'getScreenshotAs' method and mention 'OutputType'
+	Syntax: File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	Using the FileUtils class copy the generated screenshot file to any location
+	Syntax: FileUtils.copyFile(scrFile, new File(<Give location where image to be saved with Extension>));
+	Example: File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		 FileUtils.copyFile(scrFile, new File("C:\\Users\\some_user\\Desktop\\Image.png"));
+
+Exception Handling:
+	Exceptions - ArrayOutOfBoundsException, NullPointerException, ArithmeticException, NoSuchElementException
+	
+	
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Commonly Errors Faced:
+
+* The Package org.openqa.selenium is accessible from more than one module:...<modulenames>...
+  Solution: Remove jars added to ModulePath & add them to ClassPath
+  Explanation: We face this error when the jars are added to ModulePath (Each Jar is considered as separate single module) rather than ClassPath. So java gets confused to take required class from mutliple jars/modules. But in ClassPath the classes contains in all jars are merged if there are duplicates then only one class is fetched. 
+
+* java.lang.IllegalStateException
+  Solution: Driver system property needs to be setup
+  Explanation: Driver executable must be set to system property 'webdriver.chrome.driver'
+
+* NoSuchElementException 
+  Explanation: If no web element is found by using locator
