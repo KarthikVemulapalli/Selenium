@@ -147,29 +147,60 @@ Selenium Installation:
 Selenium Configuration Settings in Eclipse:
 	Configure language binding
 	Configure unit testing framework [Framework - Used for structuring automation script]
+
+Locators
+	Name, ID, ClassName			(WebElement Attributes)
+	tagName						(WebElement Tag)
+	LinkText, PartialLinkText	(WebElement InnerText)
+	CSS, XPath, PageDOM			(Query using WebElement Attributes)
 	
-Finding elemensts by using CSS Selector locator the most common ones are:
-	1.Tag & ID - Format: css=tag#ID (Ex: driver.findElement (By.cssSelector("input#ctl00_body_txtUserID"));)
-	2.Tag & Class - Format: css=tag.class (Ex: driver.findElement(By.cssSelector("input.buttonStyle"));)
-	3.Tag & Attribute - Format: css=tag[attribute=value] (Ex: driver.findElement(By.cssSelector("input[id=ctl00_body_txtUserID]"));)
-	4.Tag, Class & Attribute - Format: css=tag.class[attribute=value] (Ex: driver.findElement(By.cssSelector("input.text[id=ctl00_body_txtUserID]"));)
+CSS (Cascading Style Sheets)
+	ID - “TagName#IDAttributeValue”
+	Class - “TagName.ClassAttributeValue” 
+	Other Attribute - “TagName[Attribute='AttributeValue’]”
+	Combining Attributes (ID) - “TagName#IDAttributeValue[Attribute='AttributeValue’]”
+	Combining Attributes (Class) - “TagName.ClassAttributeValue[Attribute='AttributeValue’]”
+
+	Locate a web element using Attribute Value – 
+		TagName[Attribute^='Starting few characters of Attribute Value']
+		TagName[Attribute$='Ending few characters of Attribute Value']
+		TagName[Attribute*=‘Set of Attribute Value Characters']
+	
 
 XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
 	1.Absolute Xpath - Each of those nested relationships present in Xpath need to be present 100% all the time, or the locator will not function.
 	2.Relative Xpath - A relative xpath is one where the path starts from the node of your choise - it doesn't need to start from the root node. (Ex: xpath=//*[@id='social-media']/ul/li[3]/a)
 		[*Note : Single slash('/') signifies to look for the element immediately inside its parent and a double slash('//') signifies to look for any child element inside the parent element.]
 	3.Customs Xpath - Format: xpath=//tag_name[@attribute='value']
-		a. Contains: Format: xpath=//input[contains (@name,'txtUserID')]
-		b. OR & AND: Format: xpath=//input[@type='submit' OR @name='buttonSubmit'] & xpath=//input[@type='submit' AND @name='buttonSubmit']
-		c. Start-with function
-
-Webpage Synchronization with driver:
-	1. Implicit Wait - Used only once after driver intialization. Applicable for all the statements of the code till the browser or driver is closed. The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
-		Syntax: driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	2. Explicit Wait - Used only where synchronization is missed.
-		Syntax: WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
-
+		Standard - //TagName[@Atrribute=‘Attribute Value’]
+		Contains - // *[contains(@Atrribute, ‘Value’)]
+		OR - //*[@Attribute1=‘value' or @ Attribute2 =‘value’]
+		AND - //*[@Attribute1=‘value’ and @ Attribute2 =‘value']
+		Starts With - //TagName[starts-with(@Attribute, ’Starting Value')]
+		Text - //TagName[text()= ‘Text Field Value']
+		
+		Axes Methods:
+		Following - “Standard Syntax + //following::tagname”
+		Preceding - “Standard Syntax + //preceding::tagname”
+		Child - “Standard Syntax + //child::tagname”
+		Parent - “Standard Syntax + //parent::tagname”
+		Following Sibling - “Standard Syntax + //following-sibling::tagname”
+		Preceding Sibling - “Standard Syntax + // preceding -sibling::tagname”
+		Ancestor - “Standard Syntax + //ancestor::tagname”
+		Descendant - “Standard Syntax + // descendant::tagname”
+		
+WebPage Synchronization with driver: Except Sleep all other are 'Dynamic Waits'. A Dynamic wait is it will wait only till Element is identified.
+	1.Sleep
+		Thread.Sleep(Time in Milliseconds)	
+	2.Implicit Wait - Used only once after driver intialization. Applicable for all the statements of the code till the browser or driver is closed. The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
+		Syntax: driver.manage().timeouts().implicitlyWait(Duration.Time);
+	3.Explicit Wait - Used only where synchronization is missed.
+		Syntax: WebDriverWait wait = new WebDriverWait(WebDriverReference, Duration.Time);
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("")));
+	4.Fluent Wait - 
+		Syntax: Wait wait = new FluentWait (WebDriver reference)
+		wait.withTimeout (Duration.ofSeconds(Int)).pollingEvery(Duration.ofSeconds(Int)).ignoring(Exception.class)
+		
 iFrames: 
 	This effect of 'page within a page' is achieved by building each section as a separate HTML file and having one "Master" HTML file to identify all of the sections.
 	In the HTML master file, frames are defined with FRAMESET and FRAME tags

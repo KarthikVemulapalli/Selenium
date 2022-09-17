@@ -1,5 +1,5 @@
 /* Step1 */
-package test.Introduction;
+package Introduction;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +24,7 @@ public class WebDriverInitialization {
 	// WebDriverManager maintain the latest driver version to respective latest browser
 	// ChromeDriver(), EdgeDriver(), FirefoxDriver() are Classes
 	
-	public WebDriver launchBrowser(String BrowserName) {
+	public void launchBrowser(String BrowserName) {
 		if (BrowserName.equalsIgnoreCase("Chrome")) {
 			//We need to write System.setProperty in place of WebDriverManager, for explanation see at the bottom
 			WebDriverManager.chromedriver().setup();
@@ -38,6 +38,9 @@ public class WebDriverInitialization {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		}
+	}
+	
+	public WebDriver getDriver() {
 		return driver;
 	}
 	

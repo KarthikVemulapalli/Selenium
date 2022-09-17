@@ -1,4 +1,4 @@
-package test.Introduction;
+package Introduction;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * This Class explains about Selenium Grid initialization based on Browser desired
  */
 
-public class SeleniumGrid {
+public class SeleniumGridInitialization {
 	public static WebDriver remotedriver;
 	
 	public WebDriver launchBrowser(String CompleteHubIPAddress, String OS, String BrowserName) throws MalformedURLException {

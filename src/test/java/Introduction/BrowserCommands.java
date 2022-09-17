@@ -1,5 +1,5 @@
 /* Step2 */
-package test.Introduction;
+package Introduction;
 
 import org.openqa.selenium.WebDriver;
 
@@ -10,10 +10,10 @@ import org.openqa.selenium.WebDriver;
 
 public class BrowserCommands {
 	
-	WebDriver driver;
+	private WebDriver driver;
 	
-	BrowserCommands(WebDriver driver){
-		this.driver=driver;
+	BrowserCommands(WebDriver driverCall){
+		this.driver=driverCall;
 	}
 	
 	// Get is used to launch a Website in the new browser webpage
