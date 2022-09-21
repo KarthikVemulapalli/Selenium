@@ -1,0 +1,18 @@
+JUnit FrameWork
+
+	* External jars added will be present in 'Referenced Libraries'
+	* Source Folder - A source folder is marked by Eclipse as containing java sources. Then, when you compile your project Eclipse will look for your source code into all your source folders. You can make any folder become a source folder adding it to the java build path.
+	* Basically "src"(source) folder contains the human readable code & "bin"(binaries) contains the binary that the java virtual machine executes like .class files.
+
+	Java Unit4 Engine Annotations:
+		@Test, @Before, @After, @BeforeClass, @AfterClass, @Ignore
+		
+		@BeforeClass & @AfterClass will run only once before any other method
+		Execution Order - @BeforeClass -> @Before -> @Test -> @After -> @AfterClass
+
+	Java Unit5 (Java Jupiter) Engine Annotations:
+		@TestFactory, @DisplayName, @Nested, @Tag, @ExtendWith, @BeforeEach(@Before), @AfterEach(@After), @BeforeAll(@BeforeClass), @AfterAll(@AfterClass), @Disable(@Ignore) 
+   
+Run Multiple JUnit tests as Single suite:
+  	@RunWith(Suite.class)
+	@SuiteClasses({ Demo03.class, Demo04.class,Demo10.class })

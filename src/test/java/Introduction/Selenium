@@ -160,11 +160,17 @@ CSS (Cascading Style Sheets)
 	Other Attribute - “TagName[Attribute='AttributeValue’]”
 	Combining Attributes (ID) - “TagName#IDAttributeValue[Attribute='AttributeValue’]”
 	Combining Attributes (Class) - “TagName.ClassAttributeValue[Attribute='AttributeValue’]”
+	
+	Locating the element using Parent/Child hierarchy - Parent_locator>child_locator
+		* ParentTagName>ChildTagName[Atrribute='AttributeValue']
+			Ex: div>textarea[placeholder='Current Address']. {We can add '>' for next sub children and go on}
+		* For Picking nth children - Parent CSS locator>Child HTML tag:nth-of-type(index)
+			Ex: select#oldSelectMenu>option:nth-of-type(2)
 
 	Locate a web element using Attribute Value – 
-		TagName[Attribute^='Starting few characters of Attribute Value']
-		TagName[Attribute$='Ending few characters of Attribute Value']
-		TagName[Attribute*=‘Set of Attribute Value Characters']
+		* TagName[Attribute^='Starting few characters of Attribute Value']
+		* TagName[Attribute$='Ending few characters of Attribute Value']
+		* TagName[Attribute*=‘Set of Attribute Value Characters']
 	
 
 XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
@@ -189,6 +195,12 @@ XPath - Xpath is the language used when locating XML (Extensible Markup Language
 		Ancestor - “Standard Syntax + //ancestor::tagname”
 		Descendant - “Standard Syntax + // descendant::tagname”
 		
+CSS vs XPath
+	* CSS Allows only Uni-directional flow which means traversal is from Parent to Child only. Whereas XPath is Bi-Directional. 
+	* CSS has better performance and Speed than xpath.
+	* XPath allows identification using visible text with help of text().
+
+
 WebPage Synchronization with driver: Except Sleep all other are 'Dynamic Waits'. A Dynamic wait is it will wait only till Element is identified.
 	1.Sleep
 		Thread.Sleep(Time in Milliseconds)	
@@ -244,15 +256,38 @@ Exception Handling:
 	
 	
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
-Commonly Errors Faced:
+Common Errors Faced:
 
-* The Package org.openqa.selenium is accessible from more than one module:...<modulenames>...
-  Solution: Remove jars added to ModulePath & add them to ClassPath
-  Explanation: We face this error when the jars are added to ModulePath (Each Jar is considered as separate single module) rather than ClassPath. So java gets confused to take required class from mutliple jars/modules. But in ClassPath the classes contains in all jars are merged if there are duplicates then only one class is fetched. 
+	* The Package org.openqa.selenium is accessible from more than one module:...<modulenames>...
+  	  Solution: Remove jars added to ModulePath & add them to ClassPath
+	  Explanation: We face this error when the jars are added to ModulePath (Each Jar is considered as separate single module) rather than ClassPath. So java gets confused to take required class from mutliple jars/modules. But in ClassPath the classes contains in all jars are merged if there are duplicates then only one class is fetched. 
 
-* java.lang.IllegalStateException
-  Solution: Driver system property needs to be setup
-  Explanation: Driver executable must be set to system property 'webdriver.chrome.driver'
+	* java.lang.IllegalStateException
+	  Solution: Driver system property needs to be setup
+	  Explanation: Driver executable must be set to system property 'webdriver.chrome.driver'
 
-* NoSuchElementException 
-  Explanation: If no web element is found by using locator
+	* NoSuchElementException 
+	  Explanation: If no web element is found by using locator
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selenium Training
+
+	Training Content:
+		https://www.guru99.com/introduction-to-selenium.html
+		https://www.edureka.co/blog/webelement-in-selenium/
+		https://www.toolsqa.com/selenium-webdriver/alerts-in-selenium/
+		https://www.javatpoint.com/exception-handling-in-java
+		https://www.nexsoftsys.com/articles/selenium-automation-testing.html
+		https://www.toptal.com/selenium/test-automation-in-selenium-using-page-object-model-and-page-factory
+
+	Training Examples:
+		Radiobuttons		- http://www.testdiary.com/training/selenium/selenium-test-page/
+		Dropdowns		- https://demoqa.com/select-menu
+		Static WebTable		- https://www.w3schools.com/html/html_tables.asp
+		Dynamic WebTable	- https://demo.guru99.com/test/web-table-element.php
+		Alerts			- https://demoqa.com/alerts
+		iFrame			- https://demo.guru99.com/test/guru99home/
+		Window Handling		- https://demoqa.com/browser-windows
+		MouseHover		- https://demo.guru99.com/test/selenium-xpath.html
+		Practice Form		- https://demoqa.com/automation-practice-form
