@@ -1,0 +1,8 @@
+Apache Maven
+	* It is a Software project management and Build management tool for Java Frameworks.
+	* Have Central repository for Maven dependencies.
+	* Flexibility in integrating with CI tools.
+	
+	* GroupID will identify your project uniquely across all projects.
+	* Artifact is a file, usually a Jar. (This will be the project name)
+	* archetype:generate generates a new project from an archetype.
