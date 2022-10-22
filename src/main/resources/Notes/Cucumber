@@ -13,7 +13,20 @@ Framework
 		Any Test (Web, Mobile, API, Unit Testing) which is written in Java/Ruby supported by Cucumber
 	How cucumber is unique and Best from other Test Frameworks (Keyword, Data Driven, Hybrid) in the Market?
 		Because Test cases/Requirements are defined with on BDD methodology (Gherkin syntax)
-	
+
+BDD Framework (Selenium BDD Cucumber) Setup: 
+	1.Create new Maven project
+	2.Add 'Cucumber Java' Dependency	: Open 'pom.xml' file, add dependency in the file. Paste the required dependency between <dependencies> structure. If <dependencies> not found create one just above the <project>.
+	3.Feature File Creation	 			: Create a 'Features' folder under 'src/test/resources' package. Inside Features folder create a file with '.feature' extension (Feature file).
+	4.Install Cucumber Plugin 	 		: After creating feature file a prompt message gets displayed, to install specific plugin to deal with feature file. Install 'Cucumber Eclipse Plugin'. If prompt message not displayed open Eclipse Marketplace and install the mentioned plugin.
+	5.Add Content in Feature File		: Add Feature statement. Under Feature statement add Scenarios, steps using Given, When, And , Then...
+	6.Create Step Definitions			: Create a 'Step Definition' folder under 'src/test/java' package. Add the required code with approriate class and methods.
+	7.Create Test Runner Class			: Create @RunWith and @CucumerOptions in the runner class
+	8.Add Dependencies					: 'JUnit' dependency resolves @RunWith & 'Cucumber JUnit' dependency resolves @CucumberOptions. And 'import io.cucumber.junit.Cucumber' to resolve Cucumber.class
+		* Required dependencies are Cucumber Java, Cucumber JUnit, JUnit, Selenium Java
+	9.Generate Reports					: create reports HTML, JSON, JUNIT/XML.
+	10.Run Code							: Run runner class and verify results
+
 Cucumber 
 	* It is BDD (Behaviour Driven Development) framework for executing Automated scripts.
 	* It is not a testing tool, it is type of Framework under BDD.
@@ -74,4 +87,19 @@ Cucumber Features:
 	5. Background 					- Prerequisite code to be executed before every scenario in that particular feature file.
 		* Feature file can have only one Background block.
 		* This Background can be implemented only when all the mentioned scenarios in that feature file have common prerequisite.
+	6. Hooks: Only two hooks i.e. Before, After
+		* Hooks are blocks of code that can run at various points in the Cucumber execution cycle.
+		* Annotations are used in StepDefinition file using tags like '@Before("@TagName")'. Before annotation executes before every scenario with specific tag.
+		* Example: In case a scenario has two tags. Example @Reg & @Smoke
+			1. If @Reg tag is called in testRunner.
+			2. Both @Before("@Smoke") and @Before("@Reg") gets executed.
+			3. The execution order will be in the order tags are mentioned.
+			4. In this example the @Reg is written first, so @Before("@Reg") executes first and then @Before("@Smoke") executes
+			5. Similarly @After("@Reg") executes first and then @After("@Smoke") executes
+	7. Reports: 
+		* plugin = {"pretty", "html:target/CucumberReports"}
+	
+	* When both Hooks and Background are used, hooks will be executed first.  Hooks has more priority than Background.
+	* When multiple hooks, the tag which is first mentioned in a scenario. That Hook will be executed first.
+	* If no tags mentioned in Before/After hook. They will be applied to all scenarios.
 

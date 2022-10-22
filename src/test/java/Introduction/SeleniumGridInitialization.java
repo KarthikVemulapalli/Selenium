@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class SeleniumGridInitialization {
 	public static WebDriver remotedriver;
 	
-	public WebDriver launchBrowser(String CompleteHubIPAddress, String OS, String BrowserName) throws MalformedURLException {
+	public void launchBrowser(String CompleteHubIPAddress, String OS, String BrowserName) throws MalformedURLException {
 		
 		//CompleteHubIPAddress - "<IpAddressOfHub:HubLocalPort>"
 		//If queries refer 'SeleniumGrid.pdf' in main/resources/SelenuimGrid 
@@ -33,6 +33,10 @@ public class SeleniumGridInitialization {
 			DesiredCapObj.setPlatform(Platform.WINDOWS);
 			remotedriver = new RemoteWebDriver(new URL(CompleteHubIPAddress), DesiredCapObj);
 		}
+	}
+	
+	public WebDriver getRemoteWebDriver() {
 		return remotedriver;
 	}
+	
 }

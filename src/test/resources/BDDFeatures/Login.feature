@@ -19,7 +19,7 @@ Scenario: Application Login Using Parameters
 	Then AccountID 321 page is displayed
 	And Validate account page title
 	
-@SmokeTest @RegTest
+@RegTest @SmokeTest
 Scenario: Application Login Using DataTable Concept
 	Given User is on Home Page
 	When User SignUp into application using following data
