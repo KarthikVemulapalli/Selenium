@@ -16,7 +16,6 @@
 			<version>4.2.0</version>
 		</dependency>
 
-
 		<!-- WebDriverManager Dependency -->
 		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
@@ -24,7 +23,6 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.2.0</version>
 		</dependency>
-
 
 		<!-- TestNG (Test Next Generation) Dependency -->
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -35,7 +33,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- JUnit 5 (Jupiter) Dependency -->
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
@@ -45,7 +42,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- JUnit 4 Dependency -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -54,7 +50,6 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-
 
 		<!-- Dependencies for Excel Interaction -->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -69,7 +64,6 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.2</version>
 		</dependency>
-		
 		
 		<!-- BDD Cucumber Dependencies -->
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
