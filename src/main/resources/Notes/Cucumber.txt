@@ -46,7 +46,8 @@ Cucumber Installation:
 Gherkin (Business Readable/Domain Specific Language)
 	* Language to describe Software Behaviour/Test Case.
 	* Written in simple language, can be easily understable by Business folks.
-	* Keywords used are Scenario, Feature, Feature File, Scenario Outline, Step Definition.
+	* Keywords used are 
+		Scenario, Feature, Feature File, Scenario Outline, Step Definition.
 	
 	Scenario: 
 		* Test cases are represented as Scenarios in Cucumber. 
@@ -82,6 +83,8 @@ Gherkin (Business Readable/Domain Specific Language)
 Cucumber Features:
 	1. Parameterization 			- Same code can be used for multiple scenarios of different data.
 	2. DataTable 					- Send multiple data without specifying all the parameters.
+		* Method should accept 'DataTable' as argument
+		* Inside code 'List<List<String>> TableData = DataTableParameter.asLists();'. This DataTableParameter contains data passed in feature file. 
 	3. Examples (Scenario Outline) 	- Using Examples keyword, we can pass different sets of data to parameters specified in code.
 	4. Tags 						- Segregating scenarios into groups and execute them based on requirement.
 	5. Background 					- Prerequisite code to be executed before every scenario in that particular feature file.
@@ -96,8 +99,18 @@ Cucumber Features:
 			3. The execution order will be in the order tags are mentioned.
 			4. In this example the @Reg is written first, so @Before("@Reg") executes first and then @Before("@Smoke") executes
 			5. Similarly @After("@Reg") executes first and then @After("@Smoke") executes
-	7. Reports: 
-		* plugin = {"pretty", "html:target/CucumberReports"}
+	7. Execution through MVN
+		* Run the below in cmd, we can execute without using eclipse
+			mvn test
+	8. Reports: 
+		1. Add external plugin for reporting 'damianszczepanik/mvn-cucumber-reporting'.
+			This mvn-cucumber-reporting plugin takes json report files as input and provide html reports as output. 
+		2. Add 'plugin' parameter in @CucumberOptions. To get json report files.
+			plugin = {"pretty", "html:target/cucumber-json-reports"}
+			plugin = {"pretty", "json:target/cucumber-json-reports"}
+		3. Add input & output directory in pom.xml file
+		4. Output html files are saved in 'target/cucumber-html-reports' folder
+		5. The html reports will get only generated in 'mvn verify' phase.
 	
 	* When both Hooks and Background are used, hooks will be executed first.  Hooks has more priority than Background.
 	* When multiple hooks, the tag which is first mentioned in a scenario. That Hook will be executed first.

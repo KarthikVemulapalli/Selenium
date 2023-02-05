@@ -113,6 +113,10 @@ CSS (Cascading Style Sheets)
 		* TagName[Attribute^='Starting few characters of Attribute Value']
 		* TagName[Attribute$='Ending few characters of Attribute Value']
 		* TagName[Attribute*=‘Set of Attribute Value Characters']
+		
+	* If the value of the attribute has space while writing CSS locator, add '.' in place of space.
+	* To get the child hierarchy use space between parent and child.
+	* To get the child at particular index use the format ':nth-child(Index)'
 	
 
 XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
