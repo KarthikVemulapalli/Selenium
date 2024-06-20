@@ -1,0 +1,241 @@
+JDK and Eclipse Installation: The following steps are for Windows OS
+	Step1: Install Latest JDK (Java Development Kit)
+	Step2: You can find JDK in 'C:\Program Files\Java'
+	Step3: Add System Environment Variables for JAVA_HOME, Java Path
+	Step4: Under System Variables click on 'New' button. Enter Variable Name='JAVA_HOME' & Variable Value='C:\Program Files\Java\jdk-16.0.2'
+	Step5: Inside System Variables click on 'Path' and add 'C:\Program Files\Java\jdk-16.0.2\bin'
+	Step6: Install code editor i.e. 'Eclipse IDE for Java Developers' or 'IntelliJ'
+	Step7: Create a Maven Project to start coding
+	Step8: If Java(jre) is not configured to project follow below steps,
+		a. Right click on Project
+	  	b. Click on BuildPath -> Configure BuildPath
+	  	c. Libraries Tab -> Click on ModulePath -> Add Library -> JRE System library -> Next -> Execution Environment -> Select the latest JRE available
+	  	d. Click on Apply and Close button
+	Step9: We can continue with Java Coding
+	Step10: Add Maven Dependencies Selenium, TestNG in 'pom.xml' to start Selenium
+	Step11: In case there is no 'pom.xml' or want to add Jars in project follow below steps,
+		a. Right click on Project
+	  	b. Click on BuildPath -> Configure BuildPath
+	  	c. Libraries Tab -> Click on ClassPath -> Add External JARS -> Select the Jars you want to add
+	  	d. Click on Apply and Close button
+
+Selenium Grid SetUp
+	* Grid consists of Hub (Router, Distributor, SessionMap) and Node.
+	* Architecture
+		1.Client sends request to 'Router'.
+		2.During initial step Router request the 'Distributor' to create a sessionID.
+		3.Distributor performs,
+			a.Distributor assigns the task to particular node.
+			b.Distributor send the sessionID and NodeURI details to 'SessionMap'
+		3.SessionMap shares the Node information to the Router.
+		4.Once Router receives the sessionID information, from next client request Router sends the request directly to the Node.
+		
+	Types of modes to activate Selenium Grid, by Grid Roles:
+		1.Standalone - It is the union of all the components.
+		2.Hub and Node - It enables the classic Hub and Node itself. Using one command all components will be enabled.
+		3.Distributed - Each component needs to be started on its own. Multiple commands need to be enabled individually for each components.
+			Hub Individual Components - Router, Distributor, SessionMap, New SessionQueue, Event Bus, Nodes.
+			
+	Launch Selenium Server: Check out the pdf available in main/resources/SeleniumGrid
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selenium Architecture
+	Step1: Selenium code (Client) will be converted to JaSon wire protocol and Sent to browser driver over http
+	Step2: Drivers are Standalone Servers different for each browser
+	Step3: The driver send http request to their respective browser over http
+	Step4: Browser sent http response to driver over http
+	Step5: driver sends the response from browser to Client in JaSon wire protocol
+
+Selenium WebDriver Architecture:
+	Language level Bindings <-> Selenium Webdriver API <-> Browser Drivers 
+	To setup language bindings -> install jars from 'www.seleniumhq.org' and download based on programming language usage. Now add jars to eclipse
+
+Selenium Components
+	1.Selenium Integrated Development Environment (IDE) - Based on UI [User Interface] uses Firefox plugin
+		* It only supports Firefox browser
+		* GUI for recording user action
+		* Recorded scripts can be used in other browsers
+	2.Selenium Remote Control (RC) - Consists of two parts
+		a. Selenium Server - Interprets and executes selenium commands
+		b. Selenium Client Library - Interface between programming and selenium server
+	3.Selenium WEBDriver - Based on API [Application Programming Interface]
+		* It was the first cross platform testing [Cross browser testing involves comparing and analyzing the behavior of your an be practiced inside website in different browser environments. It helps ensure that your website delivers an optimal user experience, independent of the browser used to access it.]
+	4.Selenium Grid
+		* Distribute the tests across multiple Physical Machines or Virtual Machines
+		* Key Terms are Hub & Node, where Hub acts as server/brain & Node where test cases are executed
+
+	* Later on 'Selenium Remote Control (RC)' is integrated with 'WebDriver' -> 'Selenium 2'.
+	* Selenium Webdriver used for automation testing of web applications
+	* In 2004 at ThoughtWorks, selenium is created initially called 'Java Script Test Runner'. Created by JASON HUGGINS to automate tasks in Web browsers.
+
+	System.setProperty (BrowserSyntax, BrowserPath);
+		- For Chrome Browser, BrowserSyntax = “webdriver.chrome.driver”
+		- For Edge Browser, BrowserSyntax = “webdriver.edge.driver”
+		- For Firefox Browser, BrowserSyntax = “webdriver.gecko.driver”
+
+	Advantages:
+		Selenium is a combination of tools
+		Selenium supports matured Object Oriented Programming Language like Java
+		Can be applied in different project methologies like DevOps, Agile
+		Its save lot of time in Test Driven Development (TDD), Continuous Integration (CI), Continuous Testing (CT)
+		Can interact with complex UI elements like Ajax Controls
+
+Selenium Installation:
+	1. Install Java(TM) SE Development Kit JDK 13.0.2 (Latest for Computer Compatability). Path for Java Program files (C-Drive)
+	2. Download Eclipse IDE 2020-06
+	3. Build Language Binding for Eclipse
+
+Selenium Configuration Settings in Eclipse:
+	Configure language binding
+	Configure unit testing framework [Framework - Used for structuring automation script]
+
+Locators
+	Name, ID, ClassName		(WebElement Attributes)
+	tagName				(WebElement Tag)
+	LinkText, PartialLinkText	(WebElement InnerText)
+	CSS, XPath, PageDOM		(Query using WebElement Attributes)
+	
+	CSS (Cascading Style Sheets)
+		ID - “TagName#IDAttributeValue”
+		Class - “TagName.ClassAttributeValue” 
+		Other Attribute - “TagName[Attribute='AttributeValue’]”
+		Combining Attributes (ID) - “TagName#IDAttributeValue[Attribute='AttributeValue’]”
+		Combining Attributes (Class) - “TagName.ClassAttributeValue[Attribute='AttributeValue’]”
+	
+		Locating the element using Parent/Child hierarchy - Parent_locator>child_locator
+			* ParentTagName>ChildTagName[Atrribute='AttributeValue']
+				Ex: div>textarea[placeholder='Current Address']. {We can add '>' for next sub children and go on}
+			* For Picking nth children - Parent CSS locator>Child HTML tag:nth-of-type(index)
+				Ex: select#oldSelectMenu>option:nth-of-type(2)
+
+		Locate a web element using Attribute Value – 
+			* TagName[Attribute^='Starting few characters of Attribute Value']
+			* TagName[Attribute$='Ending few characters of Attribute Value']
+			* TagName[Attribute*=‘Set of Attribute Value Characters']
+		
+		* If the value of the attribute has space while writing CSS locator, add '.' in place of space.
+		* To get the child hierarchy use space between parent and child.
+		* To get the child at particular index use the format ':nth-child(Index)'
+
+
+	XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
+		1.Absolute Xpath - Each of those nested relationships present in Xpath need to be present 100% all the time, or the locator will not function.
+		2.Relative Xpath - A relative xpath is one where the path starts from the node of your choise - it doesn't need to start from the root node. (Ex: xpath=//*[@id='social-media']/ul/li[3]/a)
+			[*Note : Single slash('/') signifies to look for the element immediately inside its parent and a double slash('//') signifies to look for any child element inside the parent element.]
+		3.Customs Xpath - Format: xpath=//tag_name[@attribute='value']
+			Standard - //TagName[@Atrribute=‘Attribute Value’]
+			Contains - // *[contains(@Atrribute, ‘Value’)]
+			OR - //*[@Attribute1=‘value' or @ Attribute2 =‘value’]
+			AND - //*[@Attribute1=‘value’ and @ Attribute2 =‘value']
+			Starts With - //TagName[starts-with(@Attribute, ’Starting Value')]
+			Text - //TagName[text()= ‘Text Field Value']
+	
+		Axes Methods:
+			Following - “Standard Syntax + //following::tagname”
+			Preceding - “Standard Syntax + //preceding::tagname”
+			Child - “Standard Syntax + //child::tagname”
+			Parent - “Standard Syntax + //parent::tagname”
+			Following Sibling - “Standard Syntax + //following-sibling::tagname”
+			Preceding Sibling - “Standard Syntax + // preceding -sibling::tagname”
+			Ancestor - “Standard Syntax + //ancestor::tagname”
+			Descendant - “Standard Syntax + // descendant::tagname”
+		
+	CSS vs XPath
+		* CSS Allows only Uni-directional flow which means traversal is from Parent to Child only. Whereas XPath is Bi-Directional. 
+		* CSS has better performance and Speed than xpath.
+		* XPath allows identification using visible text with help of text().
+
+
+WebPage Synchronization with driver: Except Sleep all other are 'Dynamic Waits'. A Dynamic wait is it will wait only till Element is identified.
+	1.Sleep
+		Thread.Sleep(Time in Milliseconds)	
+	2.Implicit Wait - Used only once after driver intialization. Applicable for all the statements of the code till the browser or driver is closed. The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
+		Syntax: driver.manage().timeouts().implicitlyWait(Duration.Time);
+	3.Explicit Wait - Used only where synchronization is missed.
+		Syntax: WebDriverWait wait = new WebDriverWait(WebDriverReference, Duration.Time);
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("")));
+	4.Fluent Wait - 
+		Syntax: Wait wait = new FluentWait (WebDriver reference)
+		wait.withTimeout (Duration.ofSeconds(Int)).pollingEvery(Duration.ofSeconds(Int)).ignoring(Exception.class)
+		
+iFrames: 
+	This effect of 'page within a page' is achieved by building each section as a separate HTML file and having one "Master" HTML file to identify all of the sections.
+	In the HTML master file, frames are defined with FRAMESET and FRAME tags
+	Syntax: driver.switchto().frame();
+
+AJAX: AJAX(Asynchronous JavaScript And XML) is a web development technique which uses a client-side JavaScript
+	Communicates to and from a server, Updates parts of a web page using the information received from the server, Without reloading the entire page.
+
+Multiple Windows Handling:
+	Syntax: Set<String> windowHandles = driver.getWindowHandles();
+        Use for loop to iterate between the Windows opened, identify the windows by using getTitle() function
+
+Alert PopUps:
+	Syntax: driver.switchTo().alert();
+
+Maximize/Minimize the Window:
+	Example: driver.manage().window().maximize();
+
+Operations performed using Mouse:
+	Use 'Actions' class to perform operations using mouse
+	Syntax: Actions action = new Actions(driver);
+
+Code Interacting with Excel Sheet:
+	File file = new File(<Excel sheet path in system with Excel Extension>);
+	FileInputStream fis = new FileInputStream(file);
+	XSSFWorkbook workbook = new XSSFWorkbook(fis);
+	XSSFSheet sheet = workbook.getSheet("Sheet1");
+	FileOutputStream fos = new FileOutputStream(file);
+	workbook.write(fos);
+	workbook.close();
+
+Screenshot Capture: Take the screenshot using 'TakesScreenshot' interface using the 'getScreenshotAs' method and mention 'OutputType'
+	Syntax: File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	Using the FileUtils class copy the generated screenshot file to any location
+	Syntax: FileUtils.copyFile(scrFile, new File(<Give location where image to be saved with Extension>));
+	Example: File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		 FileUtils.copyFile(scrFile, new File("C:\\Users\\some_user\\Desktop\\Image.png"));
+
+Exception Handling:
+	Exceptions - ArrayOutOfBoundsException, NullPointerException, ArithmeticException, NoSuchElementException
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selenium 4:
+	Selenium Manager is Interodce	
+	
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Common Errors Faced:
+
+	* The Package org.openqa.selenium is accessible from more than one module:...<modulenames>...
+  	  Solution: Remove jars added to ModulePath & add them to ClassPath
+	  Explanation: We face this error when the jars are added to ModulePath (Each Jar is considered as separate single module) rather than ClassPath. So java gets confused to take required class from mutliple jars/modules. But in ClassPath the classes contains in all jars are merged if there are duplicates then only one class is fetched. 
+
+	* java.lang.IllegalStateException
+	  Solution: Driver system property needs to be setup
+	  Explanation: Driver executable must be set to system property 'webdriver.chrome.driver'
+
+	* NoSuchElementException 
+	  Explanation: If no web element is found by using locator
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selenium Training
+
+	Training Content:
+		https://www.guru99.com/introduction-to-selenium.html
+		https://www.edureka.co/blog/webelement-in-selenium/
+		https://www.toolsqa.com/selenium-webdriver/alerts-in-selenium/
+		https://www.javatpoint.com/exception-handling-in-java
+		https://www.nexsoftsys.com/articles/selenium-automation-testing.html
+		https://www.toptal.com/selenium/test-automation-in-selenium-using-page-object-model-and-page-factory
+
+	Training Examples:
+		Radiobuttons		- http://www.testdiary.com/training/selenium/selenium-test-page/
+		Dropdowns		- https://demoqa.com/select-menu
+		Static WebTable		- https://www.w3schools.com/html/html_tables.asp
+		Dynamic WebTable	- https://demo.guru99.com/test/web-table-element.php
+		Alerts			- https://demoqa.com/alerts
+		iFrame			- https://demo.guru99.com/test/guru99home/
+		Window Handling		- https://demoqa.com/browser-windows
+		MouseHover		- https://demo.guru99.com/test/selenium-xpath.html
+		Practice Form		- https://demoqa.com/automation-practice-form

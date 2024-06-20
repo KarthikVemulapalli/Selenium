@@ -1,0 +1,14 @@
+Apache Maven
+	* It is a Software project management and Build management tool for Java Frameworks.
+	* Have Central repository for Maven dependencies.
+	* Flexibility in integrating with CI tools.
+	
+	* GroupID will identify your project uniquely across all projects.
+	* Artifact is a file, usually a Jar. (This will be the project name)
+	* archetype:generate generates a new project from an archetype.
+	
+	Code Execution:
+		1. Open command prompt 'cmd'
+		2. mvn compile
+		3. mvn test - This command will execute tests
+		4. mvn verify  
