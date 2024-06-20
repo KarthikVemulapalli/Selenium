@@ -23,7 +23,7 @@ Maven: Open-source build automation and project management tool widely used for 
 - WebDriver Synchronization
 - Window Handling
 
-<h2>WbeDriver Management Tool</h2>
+<h2>WebDriver Management Tool</h2>
 Bonigarcia WebDriver Manager
 
 <h2>Additional Topics Covered</h2>
