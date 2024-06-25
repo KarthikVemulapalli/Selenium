@@ -70,9 +70,9 @@ Selenium Components
 	* In 2004 at ThoughtWorks, selenium is created initially called 'Java Script Test Runner'. Created by JASON HUGGINS to automate tasks in Web browsers.
 
 	System.setProperty (BrowserSyntax, BrowserPath);
-		- For Chrome Browser, BrowserSyntax = “webdriver.chrome.driver”
-		- For Edge Browser, BrowserSyntax = “webdriver.edge.driver”
-		- For Firefox Browser, BrowserSyntax = “webdriver.gecko.driver”
+		- For Chrome Browser, BrowserSyntax = ï¿½webdriver.chrome.driverï¿½
+		- For Edge Browser, BrowserSyntax = ï¿½webdriver.edge.driverï¿½
+		- For Firefox Browser, BrowserSyntax = ï¿½webdriver.gecko.driverï¿½
 
 	Advantages:
 		Selenium is a combination of tools
@@ -97,11 +97,11 @@ Locators
 	CSS, XPath, PageDOM		(Query using WebElement Attributes)
 	
 	CSS (Cascading Style Sheets)
-		ID - “TagName#IDAttributeValue”
-		Class - “TagName.ClassAttributeValue” 
-		Other Attribute - “TagName[Attribute='AttributeValue’]”
-		Combining Attributes (ID) - “TagName#IDAttributeValue[Attribute='AttributeValue’]”
-		Combining Attributes (Class) - “TagName.ClassAttributeValue[Attribute='AttributeValue’]”
+		ID - ï¿½TagName#IDAttributeValueï¿½
+		Class - ï¿½TagName.ClassAttributeValueï¿½ 
+		Other Attribute - ï¿½TagName[Attribute='AttributeValueï¿½]ï¿½
+		Combining Attributes (ID) - ï¿½TagName#IDAttributeValue[Attribute='AttributeValueï¿½]ï¿½
+		Combining Attributes (Class) - ï¿½TagName.ClassAttributeValue[Attribute='AttributeValueï¿½]ï¿½
 	
 		Locating the element using Parent/Child hierarchy - Parent_locator>child_locator
 			* ParentTagName>ChildTagName[Atrribute='AttributeValue']
@@ -109,10 +109,10 @@ Locators
 			* For Picking nth children - Parent CSS locator>Child HTML tag:nth-of-type(index)
 				Ex: select#oldSelectMenu>option:nth-of-type(2)
 
-		Locate a web element using Attribute Value – 
+		Locate a web element using Attribute Value ï¿½ 
 			* TagName[Attribute^='Starting few characters of Attribute Value']
 			* TagName[Attribute$='Ending few characters of Attribute Value']
-			* TagName[Attribute*=‘Set of Attribute Value Characters']
+			* TagName[Attribute*=ï¿½Set of Attribute Value Characters']
 		
 		* If the value of the attribute has space while writing CSS locator, add '.' in place of space.
 		* To get the child hierarchy use space between parent and child.
@@ -124,22 +124,22 @@ Locators
 		2.Relative Xpath - A relative xpath is one where the path starts from the node of your choise - it doesn't need to start from the root node. (Ex: xpath=//*[@id='social-media']/ul/li[3]/a)
 			[*Note : Single slash('/') signifies to look for the element immediately inside its parent and a double slash('//') signifies to look for any child element inside the parent element.]
 		3.Customs Xpath - Format: xpath=//tag_name[@attribute='value']
-			Standard - //TagName[@Atrribute=‘Attribute Value’]
-			Contains - // *[contains(@Atrribute, ‘Value’)]
-			OR - //*[@Attribute1=‘value' or @ Attribute2 =‘value’]
-			AND - //*[@Attribute1=‘value’ and @ Attribute2 =‘value']
-			Starts With - //TagName[starts-with(@Attribute, ’Starting Value')]
-			Text - //TagName[text()= ‘Text Field Value']
+			Standard - //TagName[@Atrribute=ï¿½Attribute Valueï¿½]
+			Contains - // *[contains(@Atrribute, ï¿½Valueï¿½)]
+			OR - //*[@Attribute1=ï¿½value' or @ Attribute2 =ï¿½valueï¿½]
+			AND - //*[@Attribute1=ï¿½valueï¿½ and @ Attribute2 =ï¿½value']
+			Starts With - //TagName[starts-with(@Attribute, ï¿½Starting Value')]
+			Text - //TagName[text()= ï¿½Text Field Value']
 	
 		Axes Methods:
-			Following - “Standard Syntax + //following::tagname”
-			Preceding - “Standard Syntax + //preceding::tagname”
-			Child - “Standard Syntax + //child::tagname”
-			Parent - “Standard Syntax + //parent::tagname”
-			Following Sibling - “Standard Syntax + //following-sibling::tagname”
-			Preceding Sibling - “Standard Syntax + // preceding -sibling::tagname”
-			Ancestor - “Standard Syntax + //ancestor::tagname”
-			Descendant - “Standard Syntax + // descendant::tagname”
+			Following - ï¿½Standard Syntax + //following::tagnameï¿½
+			Preceding - ï¿½Standard Syntax + //preceding::tagnameï¿½
+			Child - ï¿½Standard Syntax + //child::tagnameï¿½
+			Parent - ï¿½Standard Syntax + //parent::tagnameï¿½
+			Following Sibling - ï¿½Standard Syntax + //following-sibling::tagnameï¿½
+			Preceding Sibling - ï¿½Standard Syntax + // preceding -sibling::tagnameï¿½
+			Ancestor - ï¿½Standard Syntax + //ancestor::tagnameï¿½
+			Descendant - ï¿½Standard Syntax + // descendant::tagnameï¿½
 		
 	CSS vs XPath
 		* CSS Allows only Uni-directional flow which means traversal is from Parent to Child only. Whereas XPath is Bi-Directional. 
@@ -199,10 +199,7 @@ Screenshot Capture: Take the screenshot using 'TakesScreenshot' interface using 
 
 Exception Handling:
 	Exceptions - ArrayOutOfBoundsException, NullPointerException, ArithmeticException, NoSuchElementException
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-Selenium 4:
-	Selenium Manager is Interodce	
-	
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 Common Errors Faced:
 
