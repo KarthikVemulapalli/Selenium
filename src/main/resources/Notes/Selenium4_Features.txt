@@ -1,0 +1,21 @@
+Chrome DevTools Protocol (https://chromedevtools.github.io/devtools-protocol/)
+	* CDP provide tools to instrument, inspect, debug and profile chromium, chrome and other Blink-based browsers.
+	* In Selenium 4, team has created powerful commands which are wrapper classes around CDP functions to grant access to chromium based browser DevTools directly from automated tests.
+	* Chromium driver class has predefined methods to access dev tools.
+	* Only Chrome & Edge drivers are inherited from Chromium driver. So, we can access DevTools only with Chrome and Edge browsers.
+	* Optional Class is introduced from Java 8.
+	
+	** DevTools uses send(command) to interact with CDP
+		devtoolsobject -> send(command) -> Selenium server Interprets Commands -> CDP -> Mimic behaviour on test browser
+	** For certain CDP commands there are no custom commands available in Selenium, we can directly call CDP command,
+		devtoolsobject -> executeCdpCommand(CDP) -> CDP -> Mimic behaviour on test browser
+
+	** Provide lamba expression when ever we are dealing with Comsumer and Handler.
+
+	Emulation:
+		* setDeviceMetricsOverride: Stimulate mobile browser sizes to test using web browsers.
+		* setGeolocationOverride: Acts like a VPN to the browser.
+	
+
+
+	
