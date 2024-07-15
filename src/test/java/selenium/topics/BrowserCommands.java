@@ -12,13 +12,17 @@ public class BrowserCommands {
 	
 	private WebDriver driver = new ChromeDriver();
 	
-	BrowserCommands(WebDriver driverCall){
-		this.driver=driverCall;
+	BrowserCommands(WebDriver driver){
+		this.driver=driver;
 	}
 	
 	// Get is used to launch a Website in the new browser webpage
 	public void launchURL(String URL) {
 		driver.get(URL);
+	}
+	
+	public void maximizeWindow() {
+		driver.manage().window().maximize();
 	}
 	
 	// Get active page title name

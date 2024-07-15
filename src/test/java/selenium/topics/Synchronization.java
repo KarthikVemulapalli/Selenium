@@ -18,6 +18,18 @@ public class Synchronization {
 		this.driver = driverCall;
 	}
 	
+	/*
+	 * Thread.sleep() - Static Wait by Java
+	 * Implicit Wait - Dynamic Wait by Selenium
+	 * Explicit Wait - Dynamic Wait by Selenium
+	 * Fluent Wait - Dynamic Wait by Selenium
+	 */
+	
+	/*
+	 * FluentWait(class) implements Wait (Interface)
+	 * WebDriverWait(class) extends FluentWait
+	 */
+	
 	public void StaticWait(int Seconds) {
 		try {
 			Thread.sleep(Seconds*1000);
@@ -27,32 +39,29 @@ public class Synchronization {
 	}
 	
 	public void ImplicitWait() {
-		//Implicit Wait - Dynamic Wait
-
-		//The below method is out dated i.e. @Deprecated. So we can see StrikeOff
-		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		/*
+		 * The below method is out dated i.e. @Deprecated. So we can see StrikeOff
+		 * driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		 */
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
 	public void ExplicitWait(WebElement Element) {
-		//Explicit wait - Dynamic Wait
-		/* Old Syntax 
-		 * WebDriverWait wait = new WebDriverWait(driver, 10);
-		 * */
+		/*
+		 * Explicit Wait is defined using WebDriverWait
+		 * The default polling time is set to 500ms
+		 */
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfAllElements(Element));
 	}
 	
 	public void FluentWait(WebElement Element) {
-		/* Old syntax
-		 * Wait wait = new FluentWait (driver);
-		 * wait.withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(1)).ignoring(Exception.class); */
-		
-		//Polling time - For every mentioned time period driver checks in the WebPage.
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.pollingEvery(Duration.ofSeconds(1)).ignoring(Exception.class);
-
-		wait.until(ExpectedConditions.visibilityOfAllElements(Element));
+		/*
+		 * Explicit Wait is defined using FluentWait
+		 */
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
+		wait.pollingEvery(Duration.ofMillis(500)).withTimeout(Duration.ofSeconds(10)).ignoring(Exception.class);
+		wait.until(ExpectedConditions.visibilityOf(Element));
 	}
 
 }
