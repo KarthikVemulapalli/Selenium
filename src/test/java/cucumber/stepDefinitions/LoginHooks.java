@@ -4,7 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class LoginHooks {
-
+	
 	@Before("@RegTest")
 	public void prestepRegTestScenarios() {
 		System.out.println("----- Executed Before Every RegTest -----");
@@ -14,12 +14,11 @@ public class LoginHooks {
 	public void prestepSmokeTestScenarios() {
 		System.out.println("----- Executed Before Every SmokeTest -----");
 	}
-
+	
 	@Before("@SanityTest")
 	public void prestepSanityTestScenarios() {
 		System.out.println("----- Executed Before Every SanityTest -----");
 	}
-	
 	
 	@After("@RegTest")
 	public void poststepRegTestScenarios() {
@@ -30,10 +29,10 @@ public class LoginHooks {
 	public void poststepSmokeTestScenarios() {
 		System.out.println("----- Executed After Every SmokeTest -----");
 	}
-
+	
 	@After("@SanityTest")
 	public void poststepSanityTestScenarios() {
 		System.out.println("----- Executed After Every SanityTest -----");
 	}
-
+	
 }

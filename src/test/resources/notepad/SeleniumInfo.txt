@@ -1,0 +1,17 @@
+Selenium Components
+	1.Selenium Integrated Development Environment (IDE) - Based on UI [User Interface] uses Firefox plugin
+		* It only supports Firefox browser
+		* GUI for recording user action
+		* Recorded scripts can be used in other browsers
+	2.Selenium Remote Control (RC) - Consists of two parts
+		a. Selenium Server - Interprets and executes selenium commands
+		b. Selenium Client Library - Interface between programming and selenium server
+	3.Selenium WebDriver - Based on API [Application Programming Interface]
+		* It was the first cross platform testing [Cross browser testing involves comparing and analyzing the behavior of your an be practiced inside website in different browser environments. It helps ensure that your website delivers an optimal user experience, independent of the browser used to access it.]
+	4.Selenium Grid
+		* Distribute the tests across multiple Physical Machines or Virtual Machines
+		* Key Terms are Hub & Node, where Hub acts as server/brain & Node where test cases are executed
+
+	* Later on 'Selenium Remote Control (RC)' is integrated with 'WebDriver' -> 'Selenium 2'.
+	* Selenium Webdriver used for automation testing of web applications
+	* In 2004 at ThoughtWorks, selenium is created initially called 'Java Script Test Runner'. Created by JASON HUGGINS to automate tasks in Web browsers.

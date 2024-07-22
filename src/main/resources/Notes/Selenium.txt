@@ -134,7 +134,6 @@ Locators
 		* To get the child hierarchy use space between parent and child.
 		* To get the child at particular index use the format ':nth-child(Index)'
 
-
 	XPath - Xpath is the language used when locating XML (Extensible Markup Language) nodes
 		1.Absolute Xpath - Each of those nested relationships present in Xpath need to be present 100% all the time, or the locator will not function.
 		2.Relative Xpath - A relative xpath is one where the path starts from the node of your choise - it doesn't need to start from the root node. (Ex: xpath=//*[@id='social-media']/ul/li[3]/a)
@@ -162,19 +161,66 @@ Locators
 		* CSS has better performance and Speed than xpath.
 		* XPath allows identification using visible text with help of text().
 
+WebPage Synchronization with driver:
+	1.Sleep (Static Wait)
+		Thread.Sleep(Time in Milliseconds)
 
-WebPage Synchronization with driver: Except Sleep all other are 'Dynamic Waits'. A Dynamic wait is it will wait only till Element is identified.
-	1.Sleep
-		Thread.Sleep(Time in Milliseconds)	
-	2.Implicit Wait - Used only once after driver intialization. Applicable for all the statements of the code till the browser or driver is closed. The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
-		Syntax: driver.manage().timeouts().implicitlyWait(Duration.Time);
+	Infact there are only two dynamic waits in Selenium,
+		a. Implicit Wait
+		b. Explicit Wait: We can implement explicit wait in two ways,
+			1. FluentWait
+			2. WebDriverWait
+
+	** FluentWait(class) implements Wait (Interface)
+	** WebDriverWait(class) extends FluentWait
+	
+	2.Implicit Wait (Dynamic Wait)
+		* The main function of implicit Wait is to tell the webdriver to wait for some time before throwing a 'NoSuchElementException'.
+		* Its default setting is knocked at zero.
+		* Used only once after driver intialization. 
+		* Applicable for all the statements of the code till the browser or driver is closed.
+		* The default looping time for implicit wait is 250ms (for every 250ms the driver checks the whole page for specified element)
+			Syntax: driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
 	3.Explicit Wait - Used only where synchronization is missed.
-		Syntax: WebDriverWait wait = new WebDriverWait(WebDriverReference, Duration.Time);
-				wait.until(ExpectedConditions.elementToBeClickable(By.id("")));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfAllElements(Element));
 	4.Fluent Wait - 
-		Syntax: Wait wait = new FluentWait (WebDriver reference)
-		wait.withTimeout (Duration.ofSeconds(Int)).pollingEvery(Duration.ofSeconds(Int)).ignoring(Exception.class)
-		
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
+		wait.pollingEvery(Duration.ofMillis(500)).withTimeout(Duration.ofSeconds(10)).ignoring(Exception.class);
+		wait.until(ExpectedConditions.visibilityOf(Element));
+
+Dropdown Handling
+	WebElement element = WebDriverInitialization.getDriver().findElement(By.xpath(""));
+	Syntax: Select selectdropdown = new Select(element);
+
+	* Select by Index: 
+		selectdropdown.selectByIndex(0);
+	* Select by Value:
+		selectdropdown.selectByValue("value");
+	* Select by VisibleText:
+		selectdropdown.selectByVisibleText("visible text");
+	* Returns boolean value whether given dropdown is MultiSelect or not
+		boolean multiSelectDropdown = selectdropdown.isMultiple();
+	* Returns all webelements in List<WebElement> of dropdown
+		List<WebElement> dropdownElements = selectdropdown.getOptions();	
+	* Returns first webelement of dropdown	
+		WebElement firstelement = selectdropdown.getFirstSelectedOption();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 iFrames: 
 	This effect of 'page within a page' is achieved by building each section as a separate HTML file and having one "Master" HTML file to identify all of the sections.
 	In the HTML master file, frames are defined with FRAMESET and FRAME tags
