@@ -131,21 +131,6 @@ Cucumber Options
 	** If no tags mentioned in Before/After hook. They will be applied to all scenarios.
 
 
-Dependency Injection
-	* This can be achieved by using Spring Framework, EJB, PicoContainer dependency
-
-
-Parallel Execution
-	* We create a method 'public Object[][] scenarios(){}' in TestRunner
-	* And the return type will be 'return super.scenarios()', the scenarios() method is from AbstractTestNGCucumberTests class.
-	* Add dataProvider '@DataProvider(parallel=true)' for the method.
-
-
-Re-Run Failed Scenarios
-	* Using the plugin 'rerun', this plugin helps to create a text file which have failed steps updated.
-	* We need to create a new testrunner and point the failed steps text file to it, this will help to rerun only failed test scenarios.
-
-
 Rahul Shetty Sample Projects
 	Selenium Cucumber	- https://github.com/selenium-cucumber/selenium-cucumber-java-maven-example
 	Appium Cucumber		- https://github.com/mubbashir/appium-java-cucumber-gradle
